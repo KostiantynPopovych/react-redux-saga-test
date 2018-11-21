@@ -1,0 +1,28 @@
+.post-container{
+    padding: 20px;
+    margin-bottom: 50px;
+
+    .post-container-about{
+        padding: 20px;
+
+        .post-container-creator{
+            padding: 20px;
+            text-align: right;
+        }
+
+        .post-container-title{
+            padding: 15px;
+            text-align: center;
+            border: 1px solid;
+        }
+
+        .post-container-body {
+            padding: 20px;
+        }
+    }
+    
+    .comments-container{
+        padding: 20px;
+    }
+}
+
