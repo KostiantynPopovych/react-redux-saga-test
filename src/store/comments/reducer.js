@@ -1,26 +1,26 @@
 import { 
-    FETCH_COMMENTS_START,
-    FETCH_COMMENTS_SUCCESS,
-    FETCH_COMMENTS_FAILURE,
+    FETCH_POST_COMMENTS_START,
+    FETCH_POST_COMMENTS_SUCCESS,
+    FETCH_POST_COMMENTS_FAILURE,
 } from '../comments/actionTypes';
 
 const initialState = {
-    comments: []
+    postComments: []
 };
 
 export default (state = initialState, {type, payload}) => {
     switch (type) {
-        case FETCH_COMMENTS_START:
+        case FETCH_POST_COMMENTS_START:
             return { ...state, loadingComments: true};
 
-        case FETCH_COMMENTS_SUCCESS:
+        case FETCH_POST_COMMENTS_SUCCESS:
             return { ...state,
                         loadingComments: false, 
-                        comments: [...payload], 
+                        postComments: [...payload], 
                         errorFatching: false
                     };
             
-        case FETCH_COMMENTS_FAILURE:
+        case FETCH_POST_COMMENTS_FAILURE:
             return { ...state, 
                         loadingComments: false, 
                         errorFatching: true

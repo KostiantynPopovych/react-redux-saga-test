@@ -20,15 +20,15 @@ export default ({type}) => {
     ];
     
     const clazz = `navigation-container navigation-container--${type}`;
-    const links = <ul className="navigation-container-navs">{
-        items.map(item => {
-            return <ListItem 
+    const links = <ul className="navigation-container-navs">
+    { items.map(item => (
+             <ListItem 
                         type='nav'
                         navRef={item.navRef}
                         name={item.name}
                         key={item.navRef} />
-            })
-        }</ul>;
+            )) }
+    </ul>;
     const img = <Link to='/posts'> 
                     <img src={logo} alt="Logo" className="navigation-container-logo" /> 
                 </Link>;

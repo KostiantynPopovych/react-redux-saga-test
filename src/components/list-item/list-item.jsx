@@ -20,8 +20,10 @@ export default ({type, id, name, body, email, navRef}) => {
                 </li>
             )
 
-            case 'nav': 
-                return <li className={clazz}> <Link to={navRef}>{name}</Link> </li>
+        case 'nav': 
+            return <li className={clazz}>
+                        <Link to={navRef}>{name}</Link> 
+                    </li>
 
         default: 
             return <li></li> 

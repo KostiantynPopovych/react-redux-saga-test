@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchPost } from '../../store/posts/actionCreators';
-import { fetchComments } from '../../store/comments/actionCreators';
+import { fetchPostComments } from '../../store/comments/actionCreators';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -17,14 +17,14 @@ class PostPage extends Component {
 
     static propTypes = {
         post: PropTypes.object,
-        comments: PropTypes.arrayOf(PropTypes.object)
+        postComments: PropTypes.arrayOf(PropTypes.object)
     }
 
     componentDidMount() {
         const id = Number(this.props.match.params.id);
 
         this.fetchPost(id);
-        this.fetchComments(id);
+        this.fetchPostComments(id);
     }
 
     componentWillMount() {
@@ -33,22 +33,24 @@ class PostPage extends Component {
 
     fetchPost = id => this.props.fetchPost(id);
 
-    fetchComments = id => this.props.fetchComments(id);
+    fetchPostComments = id => this.props.fetchPostComments(id);
 
     render() {
-        const { post, comments } = this.props;
+        const { post, postComments } = this.props;
         const { userId, body, title } = post;
-        const commentsList = <ul className='comments-container'>{
-            comments.map(comment => {
-                return <ListItem 
-                            id={comment.id} 
-                            type='comment'
-                            name={comment.name}
-                            body={comment.body}
-                            email={comment.email}
-                            key={comment.id} />
-                })
-        }</ul>;
+        const commentsList = 
+            <ul className='comments-container'>
+                { postComments.map(comment => (
+                        <ListItem 
+                                    id={comment.id} 
+                                    type='comment'
+                                    name={comment.name}
+                                    body={comment.body}
+                                    email={comment.email}
+                                    key={comment.id} />
+                        )) }
+            </ul>;
+        
         return (
             <div className='post-container'>
                 <div className='post-container-about'>
@@ -65,12 +67,12 @@ class PostPage extends Component {
 
 const mapStateToProps = ({posts, comments}) => ({
     post: posts.post,
-    comments: comments.comments
+    postComments: comments.postComments
 });
 
 const mapDispatchToProps = {
     fetchPost,
-    fetchComments
+    fetchPostComments
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostPage));

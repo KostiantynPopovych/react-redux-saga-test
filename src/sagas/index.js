@@ -6,13 +6,13 @@ import {
 } from './posts';
 
 import {
-    watchFetchComments
+    watchFetchPostComments
 } from './comments'
 
 export default function * () {
     yield [
         fork(watchFetchPosts),
         fork(watchFetchPost),
-        fork(watchFetchComments)
+        fork(watchFetchPostComments)
     ];
 }

@@ -28,14 +28,14 @@ function* fetchPostsList() {
     try {
         const response = yield call(axios.get, url);        
         const posts = response.data;
+
         yield put(fetchPostsSuccess(posts));
     } catch(err) {
         yield put(fetchPostsFailure());
     }
 } 
 
-function* fetchPostList(action) {
-    const { payload } = action;
+function* fetchPostList({payload}) {
     const url = `${rootURL}/posts/${payload}`;
 
     try {

@@ -1,17 +1,17 @@
 import creator from '../../helpers/action-creators-fabric';
 
 import {
-    FETCH_COMMENTS_START,
-    FETCH_COMMENTS_SUCCESS,
-    FETCH_COMMENTS_FAILURE
+    FETCH_POST_COMMENTS_START,
+    FETCH_POST_COMMENTS_SUCCESS,
+    FETCH_POST_COMMENTS_FAILURE
 } from '../comments/actionTypes';
 
-const fetchComments = creator(FETCH_COMMENTS_START, 'payload');
-const fetchCommentsSuccess = creator(FETCH_COMMENTS_SUCCESS, 'payload');
-const fetchCommentsFailure = creator(FETCH_COMMENTS_FAILURE);
+const fetchPostComments = creator(FETCH_POST_COMMENTS_START, 'payload');
+const fetchPostCommentsSuccess = creator(FETCH_POST_COMMENTS_SUCCESS, 'payload');
+const fetchPostCommentsFailure = creator(FETCH_POST_COMMENTS_FAILURE);
 
 export {
-    fetchComments,
-    fetchCommentsSuccess,
-    fetchCommentsFailure
+    fetchPostComments,
+    fetchPostCommentsSuccess,
+    fetchPostCommentsFailure
 };
