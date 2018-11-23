@@ -2,6 +2,9 @@ import {
     FETCH_POST_COMMENTS_START,
     FETCH_POST_COMMENTS_SUCCESS,
     FETCH_POST_COMMENTS_FAILURE,
+    SAVE_COMMENT_START,
+    SAVE_COMMENT_SUCCESS,
+    SAVE_COMMENT_FAILURE
 } from '../comments/actionTypes';
 
 const initialState = {
@@ -24,6 +27,22 @@ export default (state = initialState, {type, payload}) => {
             return { ...state, 
                         loadingComments: false, 
                         errorFatching: true
+                    };
+
+        case SAVE_COMMENT_START:
+        return { ...state, 
+                    savingCommentStart: true};
+
+        case SAVE_COMMENT_SUCCESS:
+            return { ...state,
+                        savingCommentStart: false, 
+                        errorCommentSaving: false
+                    };
+            
+        case SAVE_COMMENT_FAILURE:
+            return { ...state, 
+                        savingCommentStart: false, 
+                        errorCommentSaving: true
                     };
 
         default:

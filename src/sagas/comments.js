@@ -4,17 +4,35 @@ import axios from 'axios';
 import { rootURL } from '../helpers/api';
 
 import {    
-    FETCH_POST_COMMENTS_START
+    FETCH_POST_COMMENTS_START,
+    SAVE_COMMENT_START
 } from '../store/comments/actionTypes';
 
 import {
     fetchPostCommentsSuccess, 
-    fetchPostCommentsFailure 
+    fetchPostCommentsFailure,
+    saveCommentSuccess,
+    saveCommentFailure
 } from '../store/comments/actionCreators';
 
 export function* watchFetchPostComments() {
     yield takeEvery(FETCH_POST_COMMENTS_START, fetchPostCommentsList);
 };
+
+export function* watchSaveComment() {
+    yield takeEvery(SAVE_COMMENT_START, saveComment);
+};
+
+function* saveComment({payload}) {
+    const url = `${rootURL}/posts`;
+
+    try {
+        const response = yield call(axios.post, url, {...payload});  
+        yield put(saveCommentSuccess());
+    } catch(e) {
+        yield put(saveCommentFailure());
+    }
+}
 
 function* fetchPostCommentsList({payload}) {
     const url = `${rootURL}/posts/${payload}/comments`;
