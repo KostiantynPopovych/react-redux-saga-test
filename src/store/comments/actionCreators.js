@@ -13,7 +13,7 @@ const fetchPostComments = creator(FETCH_POST_COMMENTS_START, 'payload');
 const fetchPostCommentsSuccess = creator(FETCH_POST_COMMENTS_SUCCESS, 'payload');
 const fetchPostCommentsFailure = creator(FETCH_POST_COMMENTS_FAILURE);
 const saveComment = creator(SAVE_COMMENT_START, 'payload');
-const saveCommentSuccess = creator(SAVE_COMMENT_SUCCESS);
+const saveCommentSuccess = creator(SAVE_COMMENT_SUCCESS, 'payload');
 const saveCommentFailure = creator(SAVE_COMMENT_FAILURE);
 
 export {

@@ -28,7 +28,8 @@ function* saveComment({payload}) {
 
     try {
         const response = yield call(axios.post, url, {...payload});  
-        yield put(saveCommentSuccess());
+        const { comment: body, email, username: name, id}  = response.data;
+        yield put(saveCommentSuccess({body, email, name, id}));
     } catch(e) {
         yield put(saveCommentFailure());
     }

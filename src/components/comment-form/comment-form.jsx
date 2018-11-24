@@ -1,9 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import './comment-form.scss';
+
 const validate = values => {
     const errors = {}
-
+  
     if (!values.comment) {
         errors.comment = 'Required'
     }
@@ -49,47 +51,48 @@ const renderField = ({
     label,
     type,
     minValue,
-    meta: { touched, error, warning },
-  }) => (
-    <div>
-      <label>{label}</label>
-      <div>
-        <input {...input} placeholder={label} type={type} min={minValue} />
-        {touched &&
-          ((error && <span>{error}</span>) ||
-            (warning && <span>{warning}</span>))}
-      </div>
-    </div>
-  )
-  
+    textarea,
+    meta: { touched, error, warning, invalid, dirty},
+  }) => {
+    const textareaType = <textarea {...input} placeholder={label} type={type} className={`form-textarea ${ touched && error ? 'form-textarea--error' : ''}`} />
+    const inputType = <input {...input} placeholder={label} type={type} min={minValue} className={`form-input ${ touched && error ? 'form-input--error' : ''}`}/>
 
-const CommentFrom = ({handleSubmit, pristine, reset, submitting, invalid}) => {
+    return (
+      <div>
+        {textarea ? textareaType : inputType}
+      </div>
+    )
+  }
+
+const CommentForm = ({handleSubmit, submitting, reset, invalid}) => {
     const preventSubmit = event => {
         event.preventDefault();
-        handleSubmit()
+        handleSubmit();
+        reset();
     }
 
   return (
-    <form onSubmit={preventSubmit}>
+    <form onSubmit={preventSubmit} className="comment-form">
+      <p>
+        Comment
+      </p>
       <Field name="comment"
              type="text"
              component={renderField}
-             label="Comment" 
+             label="Comment"
+             textarea={true}
       />
       <Field
         name="username"
         type="text"
         component={renderField}
-        label="Username"
+        label="Name"
       />
       <Field name="email" type="email" component={renderField} label="Email" />
       <Field name="phone" type="number" component={renderField} label="Phone" minValue="0" />
-      <div>
-        <button type="submit" disabled={submitting || invalid}>
+      <div className="comment-form-btn-container">
+        <button type="submit" className={`btn ${submitting || invalid ? 'btn--disabled' : null}`} disabled={submitting || invalid}>
           Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
         </button>
       </div>
     </form>
@@ -97,7 +100,7 @@ const CommentFrom = ({handleSubmit, pristine, reset, submitting, invalid}) => {
 }
 
 export default reduxForm({
-  form: 'commentFrom',
+  form: 'commentForm',
   validate,
   warn
-})(CommentFrom)
+})(CommentForm)

@@ -35,7 +35,7 @@ class PostsPage extends Component {
                 return <ListItem 
                             id={item.id} 
                             type='post'
-                            imgSrcId={idx + 1}
+                            imgSrc={idx + 1}
                             key={item.id} />
                 })
         }</ul>;

@@ -5,20 +5,20 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './list-item.scss';
 
-export default ({type, id, name, body, email, navRef, imgSrcId}) => {
+export default ({type, id, name, body, email, navRef, imgSrc}) => {
     const clazz = `list-item list-item-${type}`;
     switch (type) {
         case 'post':
             return (
                 <li id={id} className={clazz}>
                     <ReactCSSTransitionGroup
-                        transitionName="posts"
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={300}
-                        transitionAppear={true}
-                        transitionAppearTimeout={500}>
+                            transitionName="posts"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}
+                            transitionAppear={true}
+                            transitionAppearTimeout={500}>
                         <Link to={`/posts/${id}`}>
-                            <img src={require(`../../assets/img/list-items/${imgSrcId}.jpg`)} alt="post"/>
+                            <img src={require(`../../assets/img/list-items/${imgSrc}.jpg`)} alt="post"/>
                             <FontAwesomeIcon icon="arrow-right"/>
                             <span className="list-item-post-info">
                                 <span className="list-item-post-info-title">
@@ -37,10 +37,15 @@ export default ({type, id, name, body, email, navRef, imgSrcId}) => {
         case 'comment':
             return (
                 <li className={clazz}>
-                    <div className='comment-container'>
-                        <h2 className='comment-container-name'>{name}</h2>
-                        <h3 className='comment-container-body'>{body}</h3>
-                        <h2 className='comment-container-email'>{email}</h2>
+                    <div className="comment-container">
+                        <div className="comment-container-avatar">
+                            <img src={require(`../../assets/img/list-items/casual_IMG.jpg`)} alt=""/>
+                        </div>
+                        <h4 className='comment-container-name'>{name}</h4>
+                        <p className='comment-container-email'>{email}</p>
+                        <div>
+                            <h3 className='comment-container-body'>{body}</h3>
+                        </div>
                     </div>
                 </li>
             )

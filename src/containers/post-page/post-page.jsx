@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { fetchPost } from '../../store/posts/actionCreators';
-import { fetchPostComments } from '../../store/comments/actionCreators';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { getFormValues } from 'redux-form';
+
+import { fetchPost } from '../../store/posts/actionCreators';
+import { fetchPostComments } from '../../store/comments/actionCreators';
+import { saveComment } from '../../store/comments/actionCreators';
 
 import './post-page.scss';
 
 import ListItem from '../../components/list-item';
+import CommentForm from '../../components/comment-form';
 
 class PostPage extends Component {
    
+    id = Number(this.props.match.params.id);
+
     static defaultProps = {
         title: 'Post page'
     }
@@ -21,15 +27,15 @@ class PostPage extends Component {
     }
 
     componentDidMount() {
-        const id = Number(this.props.match.params.id);
-
-        this.fetchPost(id);
-        this.fetchPostComments(id);
+        this.fetchPost(this.id);
+        this.fetchPostComments(this.id);
     }
 
     componentWillMount() {
         document.title = this.props.title; 
     }
+
+    saveComment = () => this.props.saveComment(this.props.values);
 
     fetchPost = id => this.props.fetchPost(id);
 
@@ -37,12 +43,11 @@ class PostPage extends Component {
 
     render() {
         const { post, postComments } = this.props;
-        const { userId, body, title } = post;
+        const { body, title } = post;
         const commentsList = 
             <ul className='comments-container'>
                 { postComments.map(comment => (
                         <ListItem 
-                                    id={comment.id} 
                                     type='comment'
                                     name={comment.name}
                                     body={comment.body}
@@ -54,25 +59,32 @@ class PostPage extends Component {
         return (
             <div className='post-container'>
                 <div className='post-container-about'>
-                    <h4 className='post-container-creator'>Creator id: {userId}</h4>
-                    <h1 className='post-container-title'>{title}</h1>
-                    <h2 className='post-container-body'>{body}</h2>
+                    <img src={require(`../../assets/img/list-items/${this.id}.jpg`)} alt="post"/>
+                    <div className="post-container-texts">
+                        <p className='post-container-texts-title'>{title}</p>
+                        <p className='post-container-texts-body'>{body}</p>
+                    </div>
                 </div>
                 { commentsList }
+                <div className="form-container">
+                    <CommentForm handleSubmit={this.saveComment}/>
+                </div>
             </div>
         )
     }
     
 }
 
-const mapStateToProps = ({posts, comments}) => ({
+const mapStateToProps = ({posts, comments, ...rest}) => ({
     post: posts.post,
-    postComments: comments.postComments
+    postComments: comments.postComments,
+    values: getFormValues('commentForm')({posts, comments, ...rest})
 });
 
 const mapDispatchToProps = {
     fetchPost,
-    fetchPostComments
+    fetchPostComments,
+    saveComment
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostPage));

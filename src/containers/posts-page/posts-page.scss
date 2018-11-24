@@ -10,7 +10,6 @@
 
         li {
 
-
             &:nth-child(2n) {
 
                 img {
@@ -21,6 +20,6 @@
     }
 
     @media (max-width: 720px) {
-        margin: 0 auto 240px;
+        margin: 0 auto 250px;
     }
 }

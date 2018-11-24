@@ -34,9 +34,11 @@ export default (state = initialState, {type, payload}) => {
                     savingCommentStart: true};
 
         case SAVE_COMMENT_SUCCESS:
+        const postComments = state.postComments;
             return { ...state,
                         savingCommentStart: false, 
-                        errorCommentSaving: false
+                        errorCommentSaving: false,
+                        postComments: [...postComments, {...payload}]
                     };
             
         case SAVE_COMMENT_FAILURE:
