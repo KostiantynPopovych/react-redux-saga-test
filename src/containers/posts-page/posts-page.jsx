@@ -31,7 +31,7 @@ class PostsPage extends Component {
     render() {
         const { postsList } = this.props;
         const items = <ul className='posts-container'>{
-            postsList.map(item => {
+            postsList.slice(0,5).map(item => {
                 return <ListItem 
                             id={item.id} 
                             type='link'
