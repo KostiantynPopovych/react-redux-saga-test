@@ -57,7 +57,7 @@ class Header extends Component {
                     <div className="navbar-container-iner">
                         <div className="navbar-container-iner-logo">
                             { img }
-                            <a href="#" onClick={this.showMenu} className="navbar-container-iner-menu"><FontAwesomeIcon icon="bars" /></a>
+                            <span onClick={this.showMenu} className="navbar-container-iner-menu"><FontAwesomeIcon icon="bars" /></span>
                         </div>
                         <div className="navbar-container-inner-navs">
                             { links }

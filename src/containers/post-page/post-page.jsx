@@ -37,8 +37,6 @@ class PostPage extends Component {
 
     render() {
         const { post, postComments } = this.props;
-        console.log(this);
-        
         const { userId, body, title } = post;
         const commentsList = 
             <ul className='comments-container'>

@@ -1,0 +1,96 @@
+.list-item {
+    list-style: none;
+
+    &.list-item-post {
+        position: relative;
+
+        img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }        
+
+        svg {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ffff;
+            transition: .3s opacity, .3s left;
+            opacity: 0;
+        }
+
+        .list-item-post-img--big {
+            height: 500px;
+        }
+        
+        .list-item-post-info {
+            visibility: hidden;
+            position: absolute;
+            z-index: 3;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: block;
+            padding: 2rem 2.5rem;
+
+            .list-item-post-info-title {
+                display: block;
+                font-family: 'Merriweather', sans-serif;
+                font-size: 1.4rem;
+                line-height: 2.2rem;
+                color: #fff;
+            }
+
+            .list-item-post-info-description {
+                display: block;
+                margin-top: 1rem;
+                margin-bottom: .5rem;
+                color: #727f88;
+            }
+        }
+
+        &:hover {
+            img {
+                box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
+                background: #000;
+                opacity: 0.2;
+                transition: all 300ms ease;
+            }
+
+            svg {
+                opacity: 1;
+            }
+
+            .list-item-post-info {
+                visibility: visible;
+            }
+        }  
+    } 
+}
+
+.posts-enter {
+    opacity: 0.01;
+}
+  
+.posts-enter.posts-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+  
+.posts-leave {
+    opacity: 1;
+}
+  
+.posts-leave.posts-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.posts-appear {
+    opacity: 0.01;
+}
+  
+.posts-appear.posts-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}

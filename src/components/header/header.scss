@@ -59,6 +59,7 @@
                 }
 
                 .navbar-container-iner-menu {
+                    cursor: pointer;
                     display: none;
 
                     @media (max-width: 720px) {  
@@ -100,9 +101,13 @@
                         @media (max-width: 720px) {
                             line-height: 50px;
                             border-top: 1px solid #242424;
-
+                            
                             &:last-child {
                                 border-bottom: 1px solid #242424;
+                            }
+
+                            &:hover {
+                                background-color: #242424;
                             }
                         }
 
@@ -157,4 +162,31 @@
             } 
         }
     }
+}
+
+.navs-enter {
+    opacity: 0.01;
+}
+  
+.navs-enter.navs-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+  
+.navs-leave {
+    opacity: 1;
+}
+  
+.navs-leave.navs-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.navs-appear {
+    opacity: 0.01;
+}
+  
+.navs-appear.navs-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
 }

@@ -30,18 +30,19 @@ class PostsPage extends Component {
 
     render() {
         const { postsList } = this.props;
-        const items = <ul className='posts-container'>{
-            postsList.slice(0,5).map(item => {
+        const items = <ul>{
+            postsList.slice(0,9).map((item, idx) => {
                 return <ListItem 
                             id={item.id} 
-                            type='link'
+                            type='post'
+                            imgSrcId={idx + 1}
                             key={item.id} />
                 })
         }</ul>;
         return (
-            <>
+            <div className="posts-container">
                 { items }
-            </>
+            </div>
         )
     }
     
