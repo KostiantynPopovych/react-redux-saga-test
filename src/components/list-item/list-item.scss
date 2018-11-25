@@ -9,6 +9,10 @@
             width: 100%;
             object-fit: cover;
             box-shadow: 0 20px 40px 0 rgba(0, 255, 255, 0.2);
+
+            @media (max-width: 900px) {
+                box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
+            }
         }        
 
         svg {
@@ -18,6 +22,10 @@
             color: #00ffff;
             transition: .3s opacity, .3s left;
             opacity: 0;
+
+            @media (max-width: 900px) {
+                opacity: 1;
+            }
         }
 
         .list-item-post-img--big {
@@ -48,6 +56,10 @@
                 margin-bottom: .5rem;
                 color: #727f88;
             }
+
+            @media (max-width: 900px) {
+                visibility: visible;
+            }
         }
 
         &:hover {
@@ -56,6 +68,11 @@
                 background: #000;
                 opacity: 0.2;
                 transition: all 300ms ease;
+
+                @media (max-width: 900px) {
+                    opacity: 1;
+                    background: initial;
+                }
             }
 
             svg {
@@ -64,7 +81,7 @@
 
             .list-item-post-info {
                 visibility: visible;
-            }
+            } 
         }  
     } 
 
@@ -117,13 +134,14 @@
                 }
 
                 .comment-container-email {
-                    position: relative;
+                    position: initial;
                     padding-left: 7rem;
-                    margin-bottom: 3rem;
-                    margin-top: 0.5rem;
+                    padding-top: 1rem;
+                    display: block;
                 }
 
                 .comment-container-body {
+                    margin-top: 3rem;
                     padding-left: 0;
                 }
             }

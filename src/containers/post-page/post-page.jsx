@@ -60,7 +60,7 @@ class PostPage extends Component {
         return (
             <div className='post-container'>
             <ReactCSSTransitionGroup
-                            transitionName="posts"
+                            transitionName="post"
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}
                             transitionAppear={true}

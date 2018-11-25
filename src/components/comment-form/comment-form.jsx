@@ -79,7 +79,7 @@ const CommentForm = ({handleSubmit, submitting, reset, invalid}) => {
       <Field name="comment"
              type="text"
              component={renderField}
-             label="Comment"
+             label="Leave your comment here..."
              textarea={true}
       />
       <Field
