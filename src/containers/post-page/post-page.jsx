@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { getFormValues } from 'redux-form';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { fetchPost } from '../../store/posts/actionCreators';
 import { fetchPostComments } from '../../store/comments/actionCreators';
@@ -58,6 +59,12 @@ class PostPage extends Component {
         
         return (
             <div className='post-container'>
+            <ReactCSSTransitionGroup
+                            transitionName="posts"
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={300}
+                            transitionAppear={true}
+                            transitionAppearTimeout={500}>
                 <div className='post-container-about'>
                     <img src={require(`../../assets/img/list-items/${this.id}.jpg`)} alt="post"/>
                     <div className="post-container-texts">
@@ -67,8 +74,11 @@ class PostPage extends Component {
                 </div>
                 { commentsList }
                 <div className="form-container">
-                    <CommentForm handleSubmit={this.saveComment}/>
+                    
+                        <CommentForm handleSubmit={this.saveComment}/>
                 </div>
+                </ReactCSSTransitionGroup>
+
             </div>
         )
     }

@@ -42,7 +42,7 @@ export default ({type, id, name, body, email, navRef, imgSrc}) => {
                             <img src={require(`../../assets/img/list-items/casual_IMG.jpg`)} alt=""/>
                         </div>
                         <h4 className='comment-container-name'>{name}</h4>
-                        <p className='comment-container-email'>{email}</p>
+                        <a href={`mailto:${email}`}className='comment-container-email'>{email}</a>
                         <div>
                             <h3 className='comment-container-body'>{body}</h3>
                         </div>
