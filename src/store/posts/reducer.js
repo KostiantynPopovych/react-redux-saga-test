@@ -8,7 +8,7 @@ import {
 } from './actionTypes';
 
 const initialState = {
-    post: {},
+    person: {},
     postsList: [],
 };
 
@@ -36,7 +36,7 @@ export default (state = initialState, {type, payload}) => {
         case FETCH_POST_SUCCESS:
             return { ...state,
                         globalLoading: false, 
-                        post: {...payload}, 
+                        person: {...payload}, 
                         errorFatching: false
                     };
             

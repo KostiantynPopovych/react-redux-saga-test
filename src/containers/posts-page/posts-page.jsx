@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { fetchPosts } from '../../store/posts/actionCreators';
+import { fetchPosts } from '../../store/people/actionCreators';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-import './posts-page.scss';
+import './people-page.scss';
 
 import ListItem from '../../components/list-item';
 
 class PostsPage extends Component {
    
     static defaultProps = {
-        title: 'Posts page'
+        title: 'People page'
     }
 
     static propTypes = {
@@ -34,13 +34,13 @@ class PostsPage extends Component {
             postsList.slice(0,9).map((item, idx) => {
                 return <ListItem 
                             id={item.id} 
-                            type='post'
+                            type='person'
                             imgSrc={idx + 1}
                             key={item.id} />
                 })
         }</ul>;
         return (
-            <div className="posts-container">
+            <div className="people-container">
                 { items }
             </div>
         )
@@ -48,8 +48,8 @@ class PostsPage extends Component {
     
 }
 
-const mapStateToProps = ({posts}) => ({
-    postsList: posts.postsList,
+const mapStateToProps = ({people}) => ({
+    postsList: people.postsList,
 });
 
 const mapDispatchToProps = {

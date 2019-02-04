@@ -7,11 +7,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 
 import store from '../../helpers/configure-store';
 
-import PostsPage from '../posts-page';
-import PostPage from '../post-page';
+import People from '../people-page';
+import PersonPage from '../person-page';
 import Navigation from '../../components/header';
-import AboutPage from '../../containers/about-page';
-import ContactPage from '../../containers/contact-page';
 
 library.add(fas);
 
@@ -21,13 +19,10 @@ export default () => (
             <>
                 <Navigation type='header'/>
                     <Switch>
-                        <Route exact path="/posts" component={PostsPage} />
-                        <Route exact path="/posts/:id" component={PostPage} />
-                        <Route exact path="/about" component={AboutPage} />
-                        <Route exact path="/contact" component={ContactPage} />
-                        <Redirect exact from="/" to="/posts"/>
+                        <Route exact path="/people" component={ People } />
+                        <Route exact path="/person/:id" component={ PersonPage } />
+                        <Redirect exact from="/" to="/people"/>
                     </Switch>
-                <Navigation type='footer'/>
             </>
         </Router>
     </Provider>

@@ -1,1 +1,1 @@
-export { default } from './post-page';
+export { default } from './person-page';

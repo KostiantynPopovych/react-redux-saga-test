@@ -8,24 +8,24 @@ import './list-item.scss';
 export default ({type, id, name, body, email, navRef, imgSrc}) => {
     const clazz = `list-item list-item-${type}`;
     switch (type) {
-        case 'post':
+        case 'person':
             return (
                 <li id={id} className={clazz}>
                     <ReactCSSTransitionGroup
-                            transitionName="posts"
+                            transitionName="people"
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={300}
                             transitionAppear={true}
                             transitionAppearTimeout={500}>
-                        <Link to={`/posts/${id}`}>
-                            <img src={require(`../../assets/img/list-items/${imgSrc}.jpg`)} alt="post"/>
+                        <Link to={`/people/${id}`}>
+                            <img src={require(`../../assets/img/list-items/${imgSrc}.jpg`)} alt="person"/>
                             <FontAwesomeIcon icon="arrow-right"/>
-                            <span className="list-item-post-info">
-                                <span className="list-item-post-info-title">
-                                    Pretty title to post #{id}
+                            <span className="list-item-person-info">
+                                <span className="list-item-person-info-title">
+                                    Pretty title to person #{id}
                                 </span>
-                                <span className="list-item-post-info-description">
-                                    Pretty short decripton to post #{id}
+                                <span className="list-item-person-info-description">
+                                    Pretty short decripton to person #{id}
                                 </span>
                             </span>
                         </Link> 

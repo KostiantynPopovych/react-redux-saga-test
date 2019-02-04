@@ -1,4 +1,4 @@
-.post-container {
+.person-container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -21,20 +21,20 @@
         max-width: 1140px;
     }
 
-    .post-container-about {
+    .person-container-about {
         margin-bottom: 50px;
         flex-wrap: wrap;
         flex-flow: column;
         display: flex;
 
-        .post-container-texts{
+        .person-container-texts{
             border-radius: .4rem;
             margin: -4rem 3rem 3rem 3rem;
             padding: 3rem;
             background-color: #000;
             box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.1);
 
-            .post-container-texts-title {
+            .person-container-texts-title {
                 margin: 0 auto 3rem;
                 text-align: center;
                 font-size: 2.4rem;
@@ -45,7 +45,7 @@
                 margin-bottom: 2rem
             }
 
-            .post-container-texts-body {
+            .person-container-texts-body {
                 color: #727f88;
                 font-size: 2rem;
                 display: flex;
@@ -80,29 +80,29 @@
 
 }
 
-.post-enter {
+.person-enter {
     opacity: 0.01;
 }
   
-.post-enter.post-enter-active {
+.person-enter.person-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
 }
   
-.post-leave {
+.person-leave {
     opacity: 1;
 }
   
-.post-leave.post-leave-active {
+.person-leave.person-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
 }
 
-.post-appear {
+.person-appear {
     opacity: 0.01;
 }
   
-.post-appear.post-appear-active {
+.person-appear.person-appear-active {
     opacity: 1;
     transition: opacity .5s ease-in;
 }

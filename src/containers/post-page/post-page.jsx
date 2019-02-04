@@ -5,11 +5,11 @@ import { withRouter } from 'react-router-dom';
 import { getFormValues } from 'redux-form';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { fetchPost } from '../../store/posts/actionCreators';
+import { fetchPost } from '../../store/people/actionCreators';
 import { fetchPostComments } from '../../store/comments/actionCreators';
 import { saveComment } from '../../store/comments/actionCreators';
 
-import './post-page.scss';
+import './person-page.scss';
 
 import CommentForm from '../../components/comment-form';
 import CommentsList from '../../components/comments-list';
@@ -18,11 +18,11 @@ class PostPage extends Component {
   id = Number(this.props.match.params.id);
 
   static defaultProps = {
-    title: 'Post page'
+    title: 'Person page'
   };
 
   static propTypes = {
-    post: PropTypes.object,
+    person: PropTypes.object,
     postComments: PropTypes.arrayOf(PropTypes.object)
   };
 
@@ -42,23 +42,23 @@ class PostPage extends Component {
   fetchPostComments = id => this.props.fetchPostComments(id);
 
   render() {
-    const { post } = this.props;
-    const { body, title } = post;
+    const { person } = this.props;
+    const { body, title } = person;
 
     return (
-      <div className="post-container">
+      <div className="person-container">
         <ReactCSSTransitionGroup
-          transitionName="post"
+          transitionName="person"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
           transitionAppear
           transitionAppearTimeout={500}
         >
-          <div className="post-container-about">
-            <img src={require(`../../assets/img/list-items/${this.id}.jpg`)} alt="post" />
-            <div className="post-container-texts">
-              <p className="post-container-texts-title">{title}</p>
-              <p className="post-container-texts-body">{body}</p>
+          <div className="person-container-about">
+            <img src={require(`../../assets/img/list-items/${this.id}.jpg`)} alt="person" />
+            <div className="person-container-texts">
+              <p className="person-container-texts-title">{title}</p>
+              <p className="person-container-texts-body">{body}</p>
             </div>
           </div>
           <CommentsList />
@@ -71,9 +71,9 @@ class PostPage extends Component {
   }
 }
 
-const mapStateToProps = ({ posts: { post }, comments, ...rest }) => ({
-  post,
-  values: getFormValues('commentForm')({ post, comments, ...rest })
+const mapStateToProps = ({ people: { person }, comments, ...rest }) => ({
+  person,
+  values: getFormValues('commentForm')({ person, comments, ...rest })
 });
 
 const mapDispatchToProps = {
